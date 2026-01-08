@@ -11,5 +11,7 @@ public:
 	void hienthi();
 	string hienthitype();
 	void nhapFromStream(stringstream& ss);
+	bool getCanFly() { return canFly; }
+	float getWingSpan() { return wingSpan; }
 };
 

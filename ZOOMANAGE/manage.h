@@ -29,6 +29,7 @@ public:
 	animal* RemoveAnimalWithoutDelete(const string& ID);
 	void LoadDataFromFile(const string& filename);
 	void ExportToFile(const string& filename);
+	void SearchBySpecialAttribute();
 };
 
 // Nguyen Minh Hieu
