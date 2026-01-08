@@ -9,7 +9,7 @@ int main()
 	ht.runManager();
 	ht.ExportToFile("D:\output.txt");
 	return 0;
-	// 3636336
+	//long
 }
 
 
