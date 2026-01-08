@@ -350,24 +350,24 @@ void manage::runManager()
 		cout << "                              |                                                     |"<<endl;
 		cout << "                              |             --- QUAN LY DOI TUONG ---               |" << endl;
 		cout << "                              |                                                     |" << endl;
-		cout << "                              | 1. Nhap thong tin Chuong moi                        |" << endl;
-		cout << "                              | 2. Nhap thong tin Nhan vien moi                     |" << endl;
-		cout << "                              | 3. Nhap thong tin Dong vat moi                      |" << endl;
-		cout << "                              | 4. Xoa Dong vat theo ID                             |" << endl;
-		cout << "                              | 5. Chuyen Dong vat den Chuong                       |" << endl;
+		cout << "                              |  1. Nhap thong tin Chuong moi                       |" << endl;
+		cout << "                              |  2. Nhap thong tin Nhan vien moi                    |" << endl;
+		cout << "                              |  3. Nhap thong tin Dong vat moi                     |" << endl;
+		cout << "                              |  4. Xoa Dong vat theo ID                            |" << endl;
+		cout << "                              |  5. Chuyen Dong vat den Chuong                      |" << endl;
 		cout << "                              |                                                     |" << endl;
 		cout << "                              |            --- BAO CAO & HIEN THI ---               |" << endl;
 		cout << "                              |                                                     |" << endl;
-		cout << "                              | 6. Hien thi tat ca Chuong va Dong vat trong do      |" << endl;
-		cout << "                              | 7. Hien thi tat ca Nhan vien                        |" << endl;
-		cout << "                              | 8. Hien thi chi tiet tat ca Dong vat                |" << endl;
+		cout << "                              |  6. Hien thi tat ca Chuong va Dong vat trong do     |" << endl;
+		cout << "                              |  7. Hien thi tat ca Nhan vien                       |" << endl;
+		cout << "                              |  8. Hien thi chi tiet tat ca Dong vat               |" << endl;
 		cout << "                              |                                                     |" << endl;
 		cout << "                              |               --- TIM KIEM ---                      |" << endl;
 		cout << "                              |                                                     |" << endl;
-		cout << "                              | 9. Tim kiem Dong vat theo Ten                       |" << endl;
-		cout << "                              | 10. Tim kiem Dong vat theo ID                       |" << endl;
-		cout << "                              | 11.Sap xep                                          |" << endl;
-		cout << "                              | 0. Thoat chuong trinh & luu thong tin               |" << endl;
+		cout << "                              |  9. Tim kiem Dong vat theo Ten                      |" << endl;
+		cout << "                              |  10. Tim kiem Dong vat theo ID                      |" << endl;
+		cout << "                              |  11.Sap xep                                         |" << endl;
+		cout << "                              |  0. Thoat chuong trinh & luu thong tin              |" << endl;
 		cout << "                              -------------------------------------------------------" << endl;
 		cout << "Nhap lua chon cua ban: ";
 		cin >> choice;
@@ -375,6 +375,7 @@ void manage::runManager()
 		switch (choice) {
 		case 1: { // Nhap Chuong
 			enclosure* e = new enclosure();
+			cout << "----THEM CHUONG MOI ----" << endl;
 			e->nhap();
 			AddEnclosure(e);
 			break;
@@ -386,7 +387,7 @@ void manage::runManager()
 			caretaker* c = new caretaker();
 			c->nhap();
 			AddCaretaker(c);
-			cout << "ban co muon them chuong cho nhan vien nay khong(y/n)";
+			cout << "ban co muon them chuong cho nhan vien nay khong (y/n)";
 			char choice2;
 			cin >> choice2;
 			cin.ignore();
@@ -396,7 +397,7 @@ void manage::runManager()
 				getline(cin, enid);
 				cin.ignore();
 				addcaretakertoenclosure(c->getId(), enid);
-				cout << "ban co muon them chuong cho nhan vien nay khong(y/n)";
+				cout << "ban co muon them chuong cho nhan vien nay khong (y/n)";
 				cin >> choice2;
 
 			}
@@ -404,15 +405,21 @@ void manage::runManager()
 			break;
 		}
 		case 3: // Nhap Dong vat
+			system("cls");//xoa man hinh
+			cout << "---THEM DONG VAT MOI---" << endl;
 			themmoi();
 			break;
 		case 4: { // Xoa Dong vat
+			system("cls");//xoa man hinh
+			cout << "---XOA DONG VAT---" << endl;
 			cout << "Nhap ID dong vat can xoa: ";
 			getline(cin, animalID);
 			RemoveAnimalByID(animalID);
 			break;
 		}
 		case 5: { // Chuyen Dong vat den Chuong
+			system("cls");//xoa man hinh
+			cout << "---CHUYEN DONG VAT---" << endl;
 			cout << "Nhap ID dong vat can chuyen: ";
 			getline(cin, animalID);
 			cout << "Nhap ID chuong moi: ";
@@ -426,23 +433,28 @@ void manage::runManager()
 				e->them(a);
 			}
 			else {
-				cout << "LOI: Khong tim thay dong vat hoac chuong." << endl;
+				cout << "!!! LOI: Khong tim thay dong vat hoac chuong. !!!" << endl;
 			}
 			break;
 		}
 		
 		
 		case 6: // Hien thi Chuong
+			system("cls");//xoa man hinh
 			DisplayAllEnclosures();
 			break;
 		case 7: // Hien thi Nhan vien
+			system("cls");//xoa man hinh
 			DisplayAllCaretakers();
 			break;
 		case 8: // Hien thi Dong vat
+			system("cls");//xoa man hinh
 			hienthi();
 			break;
 		
 		case 9: { // Tim theo Ten
+			system("cls");//xoa man hinh
+			cout << "--- TIM KIEM THEO TEN ---" << endl;
 			string searchName;
 			cout << "Nhap ten hoac mot phan ten dong vat: ";
 			getline(cin, searchName);
@@ -451,6 +463,7 @@ void manage::runManager()
 		}
 		
 		case 10: {
+			system("cls");//xoa man hinh
 			string animalID;
 			cout << "\n--- TIM KIEM DONG VAT THEO ID ---" << endl;
 			cout << "Nhap ID dong vat (vi du: m001, b002): ";
@@ -464,7 +477,7 @@ void manage::runManager()
 				cout << "-------------------------------------\n" << endl;
 			}
 			else {
-				cout << "\n LOI: Khong tim thay dong vat nao voi ID: " << animalID << endl;
+				cout << "\n !!! LOI: Khong tim thay dong vat nao voi ID: " << animalID << endl;
 			}
 			break;
 		}
@@ -491,27 +504,27 @@ void manage::ExportToFile(const string& filename)
 	for (auto e : ec)
 	{
 		out << "----------------------------------------\n";
-		out << "Ma chuong   : " << e->getEnclosureID() << "\n";
-		out << "Ten chuong  : " << e->getName() << "\n";
-		out << "So dong vat : " << e->hienthisoluong() << "\n\n";
+		out << "|  Ma chuong   : " << e->getEnclosureID() << "\n";
+		out << "|  Ten chuong  : " << e->getName() << "\n";
+		out << "|  So dong vat : " << e->hienthisoluong() << "\n\n";
 
 		out << "---- Danh sach dong vat ----\n";
 		for (auto a : e->getAnimals())
 		{
-			out << "ID      : " << a->hienthiid() << "\n";
-			out << "Ten     : " << a->hienthiten() << "\n";
-			out << "Can nang: " << a->hienthican() << "\n";
-			out << "Tuoi    : " << a->hienthituoi() << "\n";
-			out << "Loai    : " << a->hienthitype() << "\n";
-			out << "Tinh trang suc khoe: " << a->hienthiHealthStatus() << "\n";
+			out << "|  ID      : " << a->hienthiid() << "\n";
+			out << "|  Ten     : " << a->hienthiten() << "\n";
+			out << "|  Can nang: " << a->hienthican() << "\n";
+			out << "|  Tuoi    : " << a->hienthituoi() << "\n";
+			out << "|  Loai    : " << a->hienthitype() << "\n";
+			out << "|  Tinh trang suc khoe: " << a->hienthiHealthStatus() << "\n";
 			out << "----------------------------------------\n";
 		}
 
 		out << "\n---- Nhan vien phu trach ----\n";
 		for (auto c : e->getCaretakers())
 		{
-			out << "Nhan vien ID  : " << c->getId() << "\n";
-			out << "Ten nhan vien : " << c->getName() << "\n";
+			out << "|  Nhan vien ID  : " << c->getId() << "\n";
+			out << "|  Ten nhan vien : " << c->getName() << "\n";
 		}
 
 		out << "\n========================================\n\n";
