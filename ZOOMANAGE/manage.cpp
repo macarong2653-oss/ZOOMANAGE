@@ -21,7 +21,7 @@ void manage::LoadDataFromFile(const string& filename)
 	ifstream file(filename);
 	if (!file.is_open())
 	{
-		cout << "Khong mo duoc file!" << endl;
+		cout << "!!!! KHONG MO DUOC FILE !!!!!" << endl;
 		return;
 	}
 
@@ -105,10 +105,11 @@ void manage::LoadDataFromFile(const string& filename)
 void manage::themmoi()
 {
 	int choice;
-	cout << "\n--- Nhap Thong Tin Dong Vat Moi ---" << endl;
-	cout << "1. Bird" << endl;
-	cout << "2. Mammal" << endl;
-	cout << "3. Reptile" << endl;
+	cout << "--- Nhap Thong Tin Dong Vat Moi ---" << endl;
+	cout << "|   1. Bird                       |" << endl;
+	cout << "|   2. Mammal                     |" << endl;
+	cout << "|   3. Reptile                    |" << endl;
+	cout << "-----------------------------------" << endl;
 	cout << "Chon loai dong vat: ";
 	cin >> choice;
 	cin.ignore();
@@ -118,25 +119,25 @@ void manage::themmoi()
 	switch (choice) {
 	case 1:
 		newAnimal = new bird();
-		cout << "\n- Nhap thong tin Bird -" << endl;
+		cout << "\n-- Nhap thong tin Bird --" << endl;
 		break;
 	case 2:
 		newAnimal = new mammal();
-		cout << "\n- Nhap thong tin Mammal -" << endl;
+		cout << "\n-- Nhap thong tin Mammal --" << endl;
 		break;
 	case 3:
 		newAnimal = new reptile();
-		cout << "\n- Nhap thong tin Reptile -" << endl;
+		cout << "\n-- Nhap thong tin Reptile --" << endl;
 		break;
 	default:
-		cout << "LOI: Lua chon khong hop le." << endl;
+		cout << "!!! LOI: LUA CHON KHONG HOP LE !!!!." << endl;
 		return;
 	}
 
 	if (newAnimal) {
 		newAnimal->nhap();
 		string encID;
-		cout << "Nhap ID chuong muon chuyen den (bo qua neu chua muon chuyen): ";
+		cout << "Nhap ID chuong muon chuyen den (ENTER de bo qua neu chua muon chuyen): ";
 		getline(cin, encID);
 
 		if (!encID.empty()) {
@@ -146,7 +147,7 @@ void manage::themmoi()
 				enc->them(newAnimal);
 			}
 			else {
-				cout << "Canh bao: Khong tim thay chuong ID " << encID << ". Dong vat hien tai khong co chuong." << endl;
+				cout << "!!! CANH BAO: Khong tim thay chuong ID: " << encID << ". Dong vat hien tai khong co chuong.!!!" << endl;
 			}
 		}
 	}
@@ -156,7 +157,10 @@ void manage:: sapxep() {
 	
 		char choice;
 		do {
-			cout << "Sap xep tat ca dong vat theo (tuoi/can)(1/2): ";
+			cout << "---SAP XEP DONG VAT--- "<<endl;
+			cout << "| theo:              |"<<endl;
+			cout << "|   1. Tuoi          |" << endl;
+			cout << "|   2. Can nang      |" << endl;;
 			cin >> choice;
 			cin.ignore();
 
@@ -177,7 +181,7 @@ void manage:: sapxep() {
 			}
 
 			
-			cout << "=== Danh sach dong vat sau khi sap xep ===\n";
+			cout << "=== DANH SACH DONG VAT SAU KHI SAP XEP ===\n";
 			for (auto& a : allAnimals) a->hienthi();
 
 			cout << "Tiep tuc hay khong (y/n)? ";
@@ -191,10 +195,10 @@ void manage::hienthi() {
 		allAnimals.insert(allAnimals.end(), v.begin(), v.end());
 	}
 	int i = 1;
-	cout << "=== Danh sach tat ca dong vat trong so thu ===\n";
+	cout << "===== DANH SACH TAT CA DONG VAT TRONG SO THU =====\n";
 	for (auto& e : allAnimals) {
 		cout << i++ << ". " << e->hienthiten() << " (ID: " << e->hienthiid() << ", Loai: " << e->hienthitype() << ")" << endl;
-		cout << "----------------------\n";
+		cout << "-----------------------------------------------------\n";
 	}
 }
 void manage::AddEnclosure(enclosure* e)
@@ -336,6 +340,51 @@ animal* manage::RemoveAnimalWithoutDelete(const string& ID)
 	}
 	return nullptr;
 }
+void manage::SearchBySpecialAttribute() {
+	int subChoice;
+	cout << "\n========== TIM KIEM NANG CAO ==========" << endl;
+	cout << "1. Tim Chim co the bay" << endl;
+	cout << "2. Tim Chim co sai canh dai hon X (met)" << endl;
+	cout << "3. Tim Bo sat theo doc tinh (Co doc/Khong doc)" << endl;
+	cout << "Nhap lua chon: ";
+	cin >> subChoice;
+
+	bool found = false;
+	for (auto e : ec) {
+		for (auto an : e->getAnimals()) {
+
+			// Tìm Chim có thể bay
+			if (subChoice == 1 && an->hienthitype() == "bird") {
+				bird* b = dynamic_cast<bird*>(an);
+				if (b && b->getCanFly()) {
+					an->hienthi();
+					found = true;
+				}
+			}
+			// Tìm Chim theo sải cánh
+			else if (subChoice == 2 && an->hienthitype() == "bird") {
+				static float x = -1;
+				if (x == -1) { cout << "Nhap sai canh toi thieu: "; cin >> x; }
+				bird* b = dynamic_cast<bird*>(an);
+				if (b && b->getWingSpan() > x) {
+					an->hienthi();
+					found = true;
+				}
+			}
+			// Tìm Bò sát theo độc tính
+			else if (subChoice == 3 && an->hienthitype() == "reptile") {
+				static int poison = -1;
+				if (poison == -1) { cout << "Nhap (1: Co doc, 0: Khong doc): "; cin >> poison; }
+				reptile* r = dynamic_cast<reptile*>(an);
+				if (r && r->getIsPoisonous() == (poison == 1)) {
+					an->hienthi();
+					found = true;
+				}
+			}
+		}
+	}
+	if (!found) cout << "Khong tim thay ket qua phu hop!" << endl;
+}
 void manage::runManager()
 {
 	int choice;
@@ -346,17 +395,17 @@ void manage::runManager()
 		cout << "                              |                                                     |"<<endl;
 		cout << "                              |             --- QUAN LY DOI TUONG ---               |" << endl;
 		cout << "                              |                                                     |" << endl;
-		cout << "                              | 1. Nhap thong tin Chuong moi                        |" << endl;
-		cout << "                              | 2. Nhap thong tin Nhan vien moi                     |" << endl;
-		cout << "                              | 3. Nhap thong tin Dong vat moi                      |" << endl;
-		cout << "                              | 4. Xoa Dong vat theo ID                             |" << endl;
-		cout << "                              | 5. Chuyen Dong vat den Chuong                       |" << endl;
+		cout << "                              |  1. Nhap thong tin Chuong moi                       |" << endl;
+		cout << "                              |  2. Nhap thong tin Nhan vien moi                    |" << endl;
+		cout << "                              |  3. Nhap thong tin Dong vat moi                     |" << endl;
+		cout << "                              |  4. Xoa Dong vat theo ID                            |" << endl;
+		cout << "                              |  5. Chuyen Dong vat den Chuong                      |" << endl;
 		cout << "                              |                                                     |" << endl;
 		cout << "                              |            --- BAO CAO & HIEN THI ---               |" << endl;
 		cout << "                              |                                                     |" << endl;
-		cout << "                              | 6. Hien thi tat ca Chuong va Dong vat trong do      |" << endl;
-		cout << "                              | 7. Hien thi tat ca Nhan vien                        |" << endl;
-		cout << "                              | 8. Hien thi chi tiet tat ca Dong vat                |" << endl;
+		cout << "                              |  6. Hien thi tat ca Chuong va Dong vat trong do     |" << endl;
+		cout << "                              |  7. Hien thi tat ca Nhan vien                       |" << endl;
+		cout << "                              |  8. Hien thi chi tiet tat ca Dong vat               |" << endl;
 		cout << "                              |                                                     |" << endl;
 		cout << "                              |               --- TIM KIEM ---                      |" << endl;
 		cout << "                              |                                                     |" << endl;
@@ -371,6 +420,7 @@ void manage::runManager()
 		switch (choice) {
 		case 1: { // Nhap Chuong
 			enclosure* e = new enclosure();
+			cout << "----THEM CHUONG MOI ----" << endl;
 			e->nhap();
 			AddEnclosure(e);
 			break;
@@ -382,7 +432,7 @@ void manage::runManager()
 			caretaker* c = new caretaker();
 			c->nhap();
 			AddCaretaker(c);
-			cout << "ban co muon them chuong cho nhan vien nay khong(y/n)";
+			cout << "ban co muon them chuong cho nhan vien nay khong (y/n)";
 			char choice2;
 			cin >> choice2;
 			cin.ignore();
@@ -392,7 +442,7 @@ void manage::runManager()
 				getline(cin, enid);
 				cin.ignore();
 				addcaretakertoenclosure(c->getId(), enid);
-				cout << "ban co muon them chuong cho nhan vien nay khong(y/n)";
+				cout << "ban co muon them chuong cho nhan vien nay khong (y/n)";
 				cin >> choice2;
 
 			}
@@ -400,15 +450,21 @@ void manage::runManager()
 			break;
 		}
 		case 3: // Nhap Dong vat
+			system("cls");//xoa man hinh
+			cout << "---THEM DONG VAT MOI---" << endl;
 			themmoi();
 			break;
 		case 4: { // Xoa Dong vat
+			system("cls");//xoa man hinh
+			cout << "---XOA DONG VAT---" << endl;
 			cout << "Nhap ID dong vat can xoa: ";
 			getline(cin, animalID);
 			RemoveAnimalByID(animalID);
 			break;
 		}
 		case 5: { // Chuyen Dong vat den Chuong
+			system("cls");//xoa man hinh
+			cout << "---CHUYEN DONG VAT---" << endl;
 			cout << "Nhap ID dong vat can chuyen: ";
 			getline(cin, animalID);
 			cout << "Nhap ID chuong moi: ";
@@ -422,23 +478,28 @@ void manage::runManager()
 				e->them(a);
 			}
 			else {
-				cout << "LOI: Khong tim thay dong vat hoac chuong." << endl;
+				cout << "!!! LOI: Khong tim thay dong vat hoac chuong. !!!" << endl;
 			}
 			break;
 		}
 		
 		
 		case 6: // Hien thi Chuong
+			system("cls");//xoa man hinh
 			DisplayAllEnclosures();
 			break;
 		case 7: // Hien thi Nhan vien
+			system("cls");//xoa man hinh
 			DisplayAllCaretakers();
 			break;
 		case 8: // Hien thi Dong vat
+			system("cls");//xoa man hinh
 			hienthi();
 			break;
 		
 		case 9: { // Tim theo Ten
+			system("cls");//xoa man hinh
+			cout << "--- TIM KIEM THEO TEN ---" << endl;
 			string searchName;
 			cout << "Nhap ten hoac mot phan ten dong vat: ";
 			getline(cin, searchName);
@@ -447,6 +508,7 @@ void manage::runManager()
 		}
 		
 		case 10: {
+			system("cls");//xoa man hinh
 			string animalID;
 			cout << "\n--- TIM KIEM DONG VAT THEO ID ---" << endl;
 			cout << "Nhap ID dong vat (vi du: m001, b002): ";
@@ -460,12 +522,15 @@ void manage::runManager()
 				cout << "-------------------------------------\n" << endl;
 			}
 			else {
-				cout << "\n LOI: Khong tim thay dong vat nao voi ID: " << animalID << endl;
+				cout << "\n !!! LOI: Khong tim thay dong vat nao voi ID: " << animalID << endl;
 			}
 			break;
 		}
 		case 11:
 			sapxep();
+		case 12:
+			SearchBySpecialAttribute();
+			break;
 		case 0:
 			cout << "Dang thoat chuong trinh..." << endl;
 			break;
@@ -487,27 +552,27 @@ void manage::ExportToFile(const string& filename)
 	for (auto e : ec)
 	{
 		out << "----------------------------------------\n";
-		out << "Ma chuong   : " << e->getEnclosureID() << "\n";
-		out << "Ten chuong  : " << e->getName() << "\n";
-		out << "So dong vat : " << e->hienthisoluong() << "\n\n";
+		out << "|  Ma chuong   : " << e->getEnclosureID() << "\n";
+		out << "|  Ten chuong  : " << e->getName() << "\n";
+		out << "|  So dong vat : " << e->hienthisoluong() << "\n\n";
 
 		out << "---- Danh sach dong vat ----\n";
 		for (auto a : e->getAnimals())
 		{
-			out << "ID      : " << a->hienthiid() << "\n";
-			out << "Ten     : " << a->hienthiten() << "\n";
-			out << "Can nang: " << a->hienthican() << "\n";
-			out << "Tuoi    : " << a->hienthituoi() << "\n";
-			out << "Loai    : " << a->hienthitype() << "\n";
-			out << "Tinh trang suc khoe: " << a->hienthiHealthStatus() << "\n";
+			out << "|  ID      : " << a->hienthiid() << "\n";
+			out << "|  Ten     : " << a->hienthiten() << "\n";
+			out << "|  Can nang: " << a->hienthican() << "\n";
+			out << "|  Tuoi    : " << a->hienthituoi() << "\n";
+			out << "|  Loai    : " << a->hienthitype() << "\n";
+			out << "|  Tinh trang suc khoe: " << a->hienthiHealthStatus() << "\n";
 			out << "----------------------------------------\n";
 		}
 
 		out << "\n---- Nhan vien phu trach ----\n";
 		for (auto c : e->getCaretakers())
 		{
-			out << "Nhan vien ID  : " << c->getId() << "\n";
-			out << "Ten nhan vien : " << c->getName() << "\n";
+			out << "|  Nhan vien ID  : " << c->getId() << "\n";
+			out << "|  Ten nhan vien : " << c->getName() << "\n";
 		}
 
 		out << "\n========================================\n\n";
