@@ -21,7 +21,7 @@ void manage::LoadDataFromFile(const string& filename)
 	ifstream file(filename);
 	if (!file.is_open())
 	{
-		cout << "Khong mo duoc file!" << endl;
+		cout << "!!!! KHONG MO DUOC FILE !!!!!" << endl;
 		return;
 	}
 
@@ -105,10 +105,11 @@ void manage::LoadDataFromFile(const string& filename)
 void manage::themmoi()
 {
 	int choice;
-	cout << "\n--- Nhap Thong Tin Dong Vat Moi ---" << endl;
-	cout << "1. Bird" << endl;
-	cout << "2. Mammal" << endl;
-	cout << "3. Reptile" << endl;
+	cout << "--- Nhap Thong Tin Dong Vat Moi ---" << endl;
+	cout << "|   1. Bird                       |" << endl;
+	cout << "|   2. Mammal                     |" << endl;
+	cout << "|   3. Reptile                    |" << endl;
+	cout << "-----------------------------------" << endl;
 	cout << "Chon loai dong vat: ";
 	cin >> choice;
 	cin.ignore();
@@ -118,25 +119,25 @@ void manage::themmoi()
 	switch (choice) {
 	case 1:
 		newAnimal = new bird();
-		cout << "\n- Nhap thong tin Bird -" << endl;
+		cout << "\n-- Nhap thong tin Bird --" << endl;
 		break;
 	case 2:
 		newAnimal = new mammal();
-		cout << "\n- Nhap thong tin Mammal -" << endl;
+		cout << "\n-- Nhap thong tin Mammal --" << endl;
 		break;
 	case 3:
 		newAnimal = new reptile();
-		cout << "\n- Nhap thong tin Reptile -" << endl;
+		cout << "\n-- Nhap thong tin Reptile --" << endl;
 		break;
 	default:
-		cout << "LOI: Lua chon khong hop le." << endl;
+		cout << "!!! LOI: LUA CHON KHONG HOP LE !!!!." << endl;
 		return;
 	}
 
 	if (newAnimal) {
 		newAnimal->nhap();
 		string encID;
-		cout << "Nhap ID chuong muon chuyen den (bo qua neu chua muon chuyen): ";
+		cout << "Nhap ID chuong muon chuyen den (ENTER de bo qua neu chua muon chuyen): ";
 		getline(cin, encID);
 
 		if (!encID.empty()) {
@@ -146,7 +147,7 @@ void manage::themmoi()
 				enc->them(newAnimal);
 			}
 			else {
-				cout << "Canh bao: Khong tim thay chuong ID " << encID << ". Dong vat hien tai khong co chuong." << endl;
+				cout << "!!! CANH BAO: Khong tim thay chuong ID: " << encID << ". Dong vat hien tai khong co chuong.!!!" << endl;
 			}
 		}
 	}
@@ -156,7 +157,10 @@ void manage:: sapxep() {
 	
 		char choice;
 		do {
-			cout << "Sap xep tat ca dong vat theo (tuoi/can)(1/2): ";
+			cout << "---SAP XEP DONG VAT--- "<<endl;
+			cout << "| theo:              |"<<endl;
+			cout << "|   1. Tuoi          |" << endl;
+			cout << "|   2. Can nang      |" << endl;;
 			cin >> choice;
 			cin.ignore();
 
@@ -177,7 +181,7 @@ void manage:: sapxep() {
 			}
 
 			
-			cout << "=== Danh sach dong vat sau khi sap xep ===\n";
+			cout << "=== DANH SACH DONG VAT SAU KHI SAP XEP ===\n";
 			for (auto& a : allAnimals) a->hienthi();
 
 			cout << "Tiep tuc hay khong (y/n)? ";
@@ -191,10 +195,10 @@ void manage::hienthi() {
 		allAnimals.insert(allAnimals.end(), v.begin(), v.end());
 	}
 	int i = 1;
-	cout << "=== Danh sach tat ca dong vat trong so thu ===\n";
+	cout << "===== DANH SACH TAT CA DONG VAT TRONG SO THU =====\n";
 	for (auto& e : allAnimals) {
 		cout << i++ << ". " << e->hienthiten() << " (ID: " << e->hienthiid() << ", Loai: " << e->hienthitype() << ")" << endl;
-		cout << "----------------------\n";
+		cout << "-----------------------------------------------------\n";
 	}
 }
 void manage::AddEnclosure(enclosure* e)
