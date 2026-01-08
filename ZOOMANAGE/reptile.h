@@ -13,5 +13,6 @@ public:
 	void hienthi();
 	string hienthitype();
 	void nhapFromStream(stringstream& ss);
+	bool getIsPoisonous() { return isPoisonous; }
 };
 
