@@ -241,8 +241,10 @@ void manage::DisplayAllEnclosures() {
 		cout << "Chua co chuong nao trong he thong." << endl;
 		return;
 	}
+	int i = 1;
 	for (auto* e : ec) {
-		e->DisplayOccupants();
+
+		cout<<i++<<"." << *e;
 	}
 	cout << "=======================================================\n" << endl;
 }

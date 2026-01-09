@@ -24,4 +24,5 @@ public:
 	void DisplayOccupants();
 	size_t hienthisoluong() { return a.size(); }
 	vector <caretaker*> getCaretakers() { return ct; }
+	
 };

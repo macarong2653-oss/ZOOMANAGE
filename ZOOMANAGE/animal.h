@@ -24,5 +24,6 @@ public:
 	string hienthiHealthStatus();
 	string hienthienclosureid() { return enclosureID; }
 	virtual void nhapFromStream(stringstream& ss) = 0;
+	
 };
 

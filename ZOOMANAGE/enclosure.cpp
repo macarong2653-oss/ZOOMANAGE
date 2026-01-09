@@ -37,7 +37,22 @@ ostream& operator<<(ostream& os, const enclosure& e)
 		<< "\nSo nhan vien  : " << e.ct.size()
 		<< "\n---------------------------\n";
 
-	return os;
+	os << "Cac dong vat trong chuong:" << endl;
+
+	if (e.a.empty()) {
+		os << "Chuong trong." << endl;
+	}
+	else {
+		int i = 1;
+		for (auto b : e.a) {
+			os << i++ << ". " << b->hienthiten()
+				<< " (ID: " << b->hienthiid()
+				<< ", Loai: " << b->hienthitype() << ")" << endl;
+		}
+		cout << "\n--------------------------\n";
+	}
+
+	return os; 
 }
 void enclosure:: addcaretaker(caretaker* c) {
 	for (auto ct_ : ct)
@@ -58,16 +73,4 @@ void enclosure::RemoveAnimal(const string& animalID)
 		}
 	}
 	cout << "Khong tim thay dong vat co ID: " << animalID << endl;
-}
-void enclosure::DisplayOccupants()
-{
-	cout << "--- Cac dong vat trong chuong " << enclosureid << " (" << name << ") ---" << endl;
-	if (a.empty()) {
-		cout << "Chuong trong." << endl;
-		return;
-	}
-	int i = 1;
-	for (auto b:a) {
-		cout << i++ << ". " << b->hienthiten() << " (ID: " << b->hienthiid() << ", Loai: " << b->hienthitype() << ")" << endl;
-	}
 }
