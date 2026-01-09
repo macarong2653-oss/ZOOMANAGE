@@ -383,6 +383,9 @@ animal* manage::RemoveAnimalWithoutDelete(const string& ID)
 	if (!found) cout << "Khong tim thay ket qua phu hop!" << endl;
 }
 
+
+
+
 void manage::runManager()
 {
 	int choice;
@@ -417,7 +420,8 @@ void manage::runManager()
 		cin >> choice;
 		cin.ignore();
 		switch (choice) {
-		case 1: { // Nhap Chuong
+		case 1: {
+			system("cls");// Nhap Chuong
 			enclosure* e = new enclosure();
 			e->nhap();
 			AddEnclosure(e);
@@ -447,16 +451,19 @@ void manage::runManager()
 
 			break;
 		}
-		case 3: // Nhap Dong vat
+		case 3:
+			system("cls");// Nhap Dong vat
 			themmoi();
 			break;
-		case 4: { // Xoa Dong vat
+		case 4: { 
+			system("cls");// Xoa Dong vat
 			cout << "Nhap ID dong vat can xoa: ";
 			getline(cin, animalID);
 			RemoveAnimalByID(animalID);
 			break;
 		}
-		case 5: { // Chuyen Dong vat den Chuong
+		case 5: {
+			system("cls");// Chuyen Dong vat den Chuong
 			cout << "Nhap ID dong vat can chuyen: ";
 			getline(cin, animalID);
 			cout << "Nhap ID chuong moi: ";
@@ -477,16 +484,20 @@ void manage::runManager()
 
 
 		case 6: // Hien thi Chuong
+			system("cls");
 			DisplayAllEnclosures();
 			break;
 		case 7: // Hien thi Nhan vien
+			system("cls");
 			DisplayAllCaretakers();
 			break;
 		case 8: // Hien thi Dong vat
+			system("cls");
 			hienthi();
 			break;
 
 		case 9: { // Tim theo Ten
+			system("cls");
 			string searchName;
 			cout << "Nhap ten hoac mot phan ten dong vat: ";
 			getline(cin, searchName);
@@ -495,6 +506,7 @@ void manage::runManager()
 		}
 
 		case 10: {
+			system("cls");
 			string animalID;
 			cout << "\n--- TIM KIEM DONG VAT THEO ID ---" << endl;
 			cout << "Nhap ID dong vat (vi du: m001, b002): ";
@@ -513,8 +525,10 @@ void manage::runManager()
 			break;
 		}
 		case 11:
+			system("cls");
 			sapxep();
 		case 12:
+			system("cls");
 			SearchBySpecialAttribute();
 			break;
 		case 0:
