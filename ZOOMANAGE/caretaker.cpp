@@ -18,11 +18,11 @@ void caretaker::hienthi()
 	cout << "danh sach chuong quan ly ";
 	for (auto* e : ec)
 	{
-		cout<<e->getEnclosureID();
+		cout<<e->IDchuong();
 	}
 
 }
-void caretaker::addenclosure(enclosure* e )
+void caretaker::ThemVaoChuong(enclosure* e )
 {
 		
 		for (auto en : ec)
@@ -36,4 +36,3 @@ caretaker::caretaker(const string& id, const string& name)
 	this->id = id;
 	this->name = name;
 }
-// Hi
