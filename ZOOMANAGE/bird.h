@@ -13,5 +13,6 @@ public:
 	void nhapFromStream(stringstream& ss);
 	bool getCanFly() { return canFly; }
 	float getWingSpan() { return wingSpan; }
+	string getFeatherColor() { return featherColor; }
 };
 

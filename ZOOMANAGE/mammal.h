@@ -13,4 +13,5 @@ public:
 	void hienthi();
 	string hienthitype();
 	void nhapFromStream(stringstream& ss);
+	string getFurColor() { return furColor; }
 };

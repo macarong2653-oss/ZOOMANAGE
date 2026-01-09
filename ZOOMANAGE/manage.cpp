@@ -343,6 +343,7 @@ animal* manage::RemoveAnimalWithoutDelete(const string& ID)
 	cout << "1. Tim Chim co the bay" << endl;
 	cout << "2. Tim Chim co sai canh dai hon X (met)" << endl;
 	cout << "3. Tim Bo sat theo doc tinh (Co doc/Khong doc)" << endl;
+	cout << "4. Tim dong vat theo mau long (Thu/Chim)" << endl;
 	cout << "Nhap lua chon: ";
 	cin >> subChoice;
 
@@ -378,6 +379,34 @@ animal* manage::RemoveAnimalWithoutDelete(const string& ID)
 					found = true;
 				}
 			}
+			//Tìm theo màu lông
+			if (subChoice == 4) {
+				string targetColor;
+				cout << "Nhap mau long can tim: ";
+				getline(cin, targetColor);
+
+				for (auto e : ec) {
+					for (auto an : e->getAnimals()) {
+						// Kiem tra Mammal
+						if (an->hienthitype() == "mammal") {
+							mammal* m = dynamic_cast<mammal*>(an);
+							if (m && m->getFurColor() == targetColor) {
+								m->hienthi();
+								found = true;
+							}
+						}
+						// Kiem tra Bird
+						else if (an->hienthitype() == "bird") {
+							bird* b = dynamic_cast<bird*>(an);
+							if (b && b->getFeatherColor() == targetColor) {
+								b->hienthi();
+								found = true;
+							}
+						}
+					}
+				}
+			}
+
 		}
 	}
 	if (!found) cout << "Khong tim thay ket qua phu hop!" << endl;
