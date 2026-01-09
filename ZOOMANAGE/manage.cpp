@@ -336,6 +336,51 @@ animal* manage::RemoveAnimalWithoutDelete(const string& ID)
 	}
 	return nullptr;
 }
+void manage::SearchBySpecialAttribute() {
+	int subChoice;
+	cout << "\n========== TIM KIEM NANG CAO ==========" << endl;
+	cout << "1. Tim Chim co the bay" << endl;
+	cout << "2. Tim Chim co sai canh dai hon X (met)" << endl;
+	cout << "3. Tim Bo sat theo doc tinh (Co doc/Khong doc)" << endl;
+	cout << "Nhap lua chon: ";
+	cin >> subChoice;
+
+	bool found = false;
+	for (auto e : ec) {
+		for (auto an : e->getAnimals()) {
+
+			// Tìm Chim có thể bay
+			if (subChoice == 1 && an->hienthitype() == "bird") {
+				bird* b = dynamic_cast<bird*>(an);
+				if (b && b->getCanFly()) {
+					an->hienthi();
+					found = true;
+				}
+			}
+			// Tìm Chim theo sải cánh
+			else if (subChoice == 2 && an->hienthitype() == "bird") {
+				static float x = -1;
+				if (x == -1) { cout << "Nhap sai canh toi thieu: "; cin >> x; }
+				bird* b = dynamic_cast<bird*>(an);
+				if (b && b->getWingSpan() > x) {
+					an->hienthi();
+					found = true;
+				}
+			}
+			// Tìm Bò sát theo độc tính
+			else if (subChoice == 3 && an->hienthitype() == "reptile") {
+				static int poison = -1;
+				if (poison == -1) { cout << "Nhap (1: Co doc, 0: Khong doc): "; cin >> poison; }
+				reptile* r = dynamic_cast<reptile*>(an);
+				if (r && r->getIsPoisonous() == (poison == 1)) {
+					an->hienthi();
+					found = true;
+				}
+			}
+		}
+	}
+	if (!found) cout << "Khong tim thay ket qua phu hop!" << endl;
+}
 void manage::runManager()
 {
 	int choice;
@@ -363,6 +408,7 @@ void manage::runManager()
 		cout << "                              | 9. Tim kiem Dong vat theo Ten                       |" << endl;
 		cout << "                              | 10. Tim kiem Dong vat theo ID                       |" << endl;
 		cout << "                              | 11.Sap xep                                          |" << endl;
+		cout << "                              | 12.Tim kiem theo cac thuoc tinh dac biet            |" << endl;
 		cout << "                              | 0. Thoat chuong trinh & luu thong tin               |" << endl;
 		cout << "                              -------------------------------------------------------" << endl;
 		cout << "Nhap lua chon cua ban: ";
@@ -466,6 +512,9 @@ void manage::runManager()
 		}
 		case 11:
 			sapxep();
+		case 12:
+			SearchBySpecialAttribute();
+			break;
 		case 0:
 			cout << "Dang thoat chuong trinh..." << endl;
 			break;
