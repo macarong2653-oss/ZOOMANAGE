@@ -24,17 +24,17 @@ void mammal::nhap()
 {
     mammal::taoma();
     animal::nhap();
-    cout << "nhap thoi gian mang thai (ngay): ";
+    cout << "- Nhap thoi gian mang thai (ngay): ";
     cin >> gestationPeriod;
     cin.ignore();
-    cout << "nhap mau long: ";
+    cout << "- Nhap mau long: ";
     getline(cin, furColor);
 }
 void mammal::hienthi()
 {
     animal::hienthi();
-    cout << "Thoi gian mang thai: " << gestationPeriod << " ngay" << endl;
-    cout << "Mau long: " << furColor << endl;
+    cout << "- Thoi gian mang thai: " << gestationPeriod << " (ngay)" << endl;
+    cout << "- Mau long           : " << furColor << endl;
 }
 string mammal::hienthitype()
 {

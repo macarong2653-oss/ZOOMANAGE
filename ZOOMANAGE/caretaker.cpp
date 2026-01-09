@@ -6,16 +6,16 @@ using namespace std;
 class enclosure;
 void caretaker::nhap()
 {
-	cout << "nhap ten nhan vien :";
+	cout << "- Nhap ten nhan vien: ";
 	getline(cin,name);
 	//cin.ignore();
-	cout << "nhap id nhan vien "; cin >> id;
+	cout << "- Nhap ID nhan vien: "; cin >> id;
 }
 void caretaker::hienthi()
 {
-	cout << "ten nhan vien:" << name << endl;
-	cout << "id:" << id<<endl;
-	cout << "danh sach chuong quan ly ";
+	cout << "- Ten nhan vien: " << name << endl;
+	cout << "- ID           : " << id<<endl;
+	cout << "- Danh sach chuong quan ly:  ";
 	for (auto* e : ec)
 	{
 		cout<<e->getEnclosureID();

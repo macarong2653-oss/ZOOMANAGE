@@ -11,7 +11,7 @@ protected:
 	string gender;
 	static int nextid;
 	string enclosureID;
-	string healthStatus;
+	string trangthaisuckhoe;
 public:
 	
 	virtual void nhap()=0;
@@ -21,8 +21,8 @@ public:
 	string hienthiten();
 	float hienthican();
 	int hienthituoi();
-	string hienthiHealthStatus();
-	string hienthienclosureid() { return enclosureID; }
+	string hienthitrangthaisuckhoe();
+	string hienthiMasoChuong() { return enclosureID; }
 	virtual void nhapFromStream(stringstream& ss) = 0;
 	
 };

@@ -14,9 +14,9 @@ enclosure::enclosure(const string& id, const string& name)
 }
 void enclosure::nhap()
 {
-	cout << "Nhap ID chuong (EnclosureID): ";
+	cout << "- Nhap ID chuong (EnclosureID): ";
 	getline(cin, enclosureid);
-	cout << "Nhap Ten chuong: ";
+	cout << "- Nhap Ten chuong: ";
 	getline(cin, name);
 	
 }
@@ -72,5 +72,5 @@ void enclosure::RemoveAnimal(const string& animalID)
 			return;
 		}
 	}
-	cout << "Khong tim thay dong vat co ID: " << animalID << endl;
+	cout << "!!!! Khong tim thay dong vat co ID: " << animalID << endl;
 }
