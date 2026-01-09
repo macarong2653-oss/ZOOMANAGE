@@ -205,7 +205,7 @@ void manage::hienthi() {
 void manage::AddEnclosure(enclosure* e)
 {
 	ec.push_back(e);
-	cout << "THEM THANH CONG CHUONG: "<< e->getName<<" ID: " << e->getEnclosureID()<<" " << endl;
+	cout << "THEM THANH CONG CHUONG CO ID:  "<< e->getEnclosureID() << endl;
 
 }
 void manage::AddCaretaker(caretaker* c)
