@@ -5,9 +5,9 @@ int main()
 {
 	
     manage ht;
-	ht.LoadDataFromFile("D:\input.txt");
+	ht.LoadDataFromFile("D:\\input.txt");
 	ht.runManager();
-	ht.ExportToFile("D:\output.txt");
+	ht.ExportToFile("D:\\output.txt");
 	return 0;
 	//long
 	//kkk
