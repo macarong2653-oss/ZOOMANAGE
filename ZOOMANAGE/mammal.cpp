@@ -42,7 +42,7 @@ string mammal::hienthitype()
 }
 void mammal::nhapFromStream(stringstream& ss)
 {
-    ss  >> name >> weight >> age >> gender >> enclosureID >> healthStatus
+    ss  >> name >> weight >> age >> gender >> enclosureID >> trangthaisuckhoe
         >> gestationPeriod >> furColor;
     mammal::taoma();
 }

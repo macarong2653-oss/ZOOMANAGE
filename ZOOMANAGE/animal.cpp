@@ -16,7 +16,7 @@ void animal::nhap()
 	cout << "- Nhap gioi tinh (Male/Female): "; 
 	getline(cin, gender);
 	cout << "- Nhap tinh trang suc khoe: ";
-	getline(cin, healthStatus);
+	getline(cin, trangthaisuckhoe);
 }
 void animal::hienthi()
 {
@@ -45,4 +45,4 @@ float animal::hienthican(){
 int animal::hienthituoi(){
 	return age;
 }
-string animal::hienthitrangthaisuckhoe() { return healthStatus; }
+string animal::hienthitrangthaisuckhoe() { return trangthaisuckhoe; }

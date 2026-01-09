@@ -6,7 +6,7 @@
 using namespace std;
 void bird::nhapFromStream(stringstream& ss)
 {
-    ss >> name >> weight >> age >> gender >> enclosureID >> healthStatus
+    ss >> name >> weight >> age >> gender >> enclosureID >> trangthaisuckhoe
         >> canFly >> wingSpan >> featherColor;
     bird::taoma();
 }

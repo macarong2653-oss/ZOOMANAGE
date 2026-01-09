@@ -44,7 +44,7 @@ string reptile::hienthitype()
 }
 void reptile::nhapFromStream(stringstream& ss)
 {
-    ss  >> name >> weight >> age >> gender >> enclosureID >> healthStatus
+    ss  >> name >> weight >> age >> gender >> enclosureID >> trangthaisuckhoe
         >> isPoisonous >> sheddingFrequency >> requiredTemperature;
     reptile::taoma();
 }
