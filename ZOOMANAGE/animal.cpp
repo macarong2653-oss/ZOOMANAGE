@@ -5,30 +5,30 @@ using namespace std;
  int animal:: nextid=1;
 void animal::nhap()
 {
-	cout << "nhap ten";
+	cout << "- Nhap ten: ";
 	cin.ignore();
 	getline(cin, name);
-	cout << "nhap can nang";
+	cout << "- Nhap can nang: ";
 	cin >> weight;
-	cout << "nhap tuoi";
+	cout << "- Nhap tuoi: ";
 	cin >> age;
 	cin.ignore();
-	cout << "nhap gioi tinh (Male/Female): "; 
+	cout << "- Nhap gioi tinh (Male/Female): "; 
 	getline(cin, gender);
-	cout << "nhap tinh trang suc khoe";
-	getline(cin, healthStatus);
+	cout << "- Nhap tinh trang suc khoe: ";
+	getline(cin, trangthaisuckhoe);
 }
 void animal::hienthi()
 {
 	cout << "--- Thong tin dong vat ---" << endl;
-	cout << "ID: " << id << endl;
-	cout << "Ten: " << name << endl;
+	cout << "- ID                 : " << id << endl;
+	cout << "- Ten                : " << name << endl;
 	
-	cout << "Gioi tinh: " << gender << endl;
-	cout << "Tuoi: " << age << endl;
-	cout << "Can nang: " << weight << " kg" << endl;
-	cout << "ID Chuong: " << enclosureID << endl;
-	cout << "Trang thai suc khoe: " << healthStatus << endl;
+	cout << "- Gioi tinh          : " << gender << endl;
+	cout << "- Tuoi               : " << age << endl;
+	cout << "- Can nang           : " << weight << " (kg)" << endl;
+	cout << "- ID Chuong          : " << enclosureID << endl;
+	cout << "- Trang thai suc khoe: " << trangthaisuckhoe << endl;
 	
 }
 string animal::hienthiid()
@@ -45,4 +45,4 @@ float animal::hienthican(){
 int animal::hienthituoi(){
 	return age;
 }
-string animal::hienthiHealthStatus() { return healthStatus; }
+string animal::hienthitrangthaisuckhoe() { return trangthaisuckhoe; }

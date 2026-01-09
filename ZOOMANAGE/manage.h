@@ -15,21 +15,20 @@ public:
 	void timkiem();
 	void sapxep();
 	void hienthi();
-	void AddEnclosure(enclosure* enclosure);
-	void AddCaretaker(caretaker* caretaker);
-	void addcaretakertoenclosure(const string& caretakerID, const string& enclosureID);
-	void DisplayAllCaretakers();
-	void DisplayAllEnclosures();
-	animal* FindAnimalByID(const string& ID);
-	void FindAnimalsByName(const string& name);
-	void RemoveAnimalByID(const string& ID);
-	enclosure* FindEnclosureByID(const string& ID);
-	caretaker* FindCaretakerByID(const string& ID);
-	void runManager();
-	animal* RemoveAnimalWithoutDelete(const string& ID);
-	void LoadDataFromFile(const string& filename);
-	void ExportToFile(const string& filename);
-	void SearchBySpecialAttribute();
+	void ThemChuong(enclosure* enclosure);
+	void themnhanvien(caretaker* caretaker);
+	void ThenNhanVienVaoChuong(const string& caretakerID, const string& enclosureID);
+	void HienThiToanBoNhanVien();
+	void HienThiToanBoChuong();
+	animal* TimKiemDongVatBangID(const string& ID);
+	void TimKiemDongVatBangTen(const string& name);
+	void XoaDongVatByID(const string& ID);
+	enclosure* TimKiemChuongBangID(const string& ID);
+	caretaker* TimKiemNhanVienBangID(const string& ID);
+	void MENUQuanLy();
+	animal* ChuyenDongVat(const string& ID);
+	void TaiDuLieuTuFile(const string& filename);
+	void XuatRaFile(const string& filename);
+	void TimKiemBangThuocTinhDacBiet();
 };
 
-// Nguyen Minh Hieu

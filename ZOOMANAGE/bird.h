@@ -10,9 +10,9 @@ public:
 	void nhap();
 	void hienthi();
 	string hienthitype();
-	void nhapFromStream(stringstream& ss);
-	bool getCanFly() { return canFly; }
-	float getWingSpan() { return wingSpan; }
-	string getFeatherColor() { return featherColor; }
+	void nhaptuFile(stringstream& ss);
+	bool KhaNangBay() { return canFly; }
+	float DoDaiSaiCanh() { return wingSpan; }
+	string MauLongChim() { return featherColor; }
 };
 

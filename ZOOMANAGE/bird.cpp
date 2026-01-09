@@ -4,9 +4,9 @@
 #include <fstream>
 #include <sstream>
 using namespace std;
-void bird::nhapFromStream(stringstream& ss)
+void bird::nhaptuFile(stringstream& ss)
 {
-    ss >> name >> weight >> age >> gender >> enclosureID >> healthStatus
+    ss >> name >> weight >> age >> gender >> enclosureID >> trangthaisuckhoe
         >> canFly >> wingSpan >> featherColor;
     bird::taoma();
 }
@@ -29,20 +29,20 @@ void bird::nhap()
 { 
     bird::taoma();
     animal::nhap();
-    cout << "nhap sai canh (m): ";
+    cout << "- Nhap sai canh (m): ";
     cin >> wingSpan;
-    cout << "co the bay (1/0): ";
+    cout << "- Co the bay (1/0): ";
     cin >> canFly;
     cin.ignore();
-    cout << "nhap mau long: ";
+    cout << "- Nhap mau long: ";
     getline(cin, featherColor);
 }
 void bird::hienthi()
 {
     animal::hienthi();
-    cout << "Sai canh: " << wingSpan << " m" << endl;
-    cout << "Co the bay: " << (canFly ? "Co" : "Khong") << endl;
-    cout << "Mau long: " << featherColor << endl;
+    cout << "- Sai canh     : " << wingSpan << " (m)" << endl;
+    cout << "- Co the bay   : " << (canFly ? "Co" : "Khong") << endl;
+    cout << "- Mau long     : " << featherColor << endl;
 }
 string bird::hienthitype()
 {

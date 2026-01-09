@@ -12,7 +12,7 @@ public:
 	void nhap();
 	void hienthi();
 	string hienthitype();
-	void nhapFromStream(stringstream& ss);
-	bool getIsPoisonous() { return isPoisonous; }
+	void nhaptuFile(stringstream& ss);
+	bool DocTinh() { return isPoisonous; }
 };
 

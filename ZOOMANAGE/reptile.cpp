@@ -23,28 +23,28 @@ void reptile::nhap()
 {
     reptile::taoma();
     animal::nhap();
-    cout << "co doc (1/0): ";
+    cout << "- Co doc (1/0): ";
     cin >> isPoisonous;
-    cout << "tan suat lot da (ngay): ";
+    cout << "- Tan suat lot da (ngay): ";
     cin >> sheddingFrequency;
-    cout << "nhiet do moi truong yeu cau (°C): ";
+    cout << "- Nhiet do moi truong yeu cau (°C): ";
     cin >> requiredTemperature;
     cin.ignore();
 }
 void reptile::hienthi()
 {
     animal::hienthi();
-    cout << "Co doc: " << (isPoisonous ? "Co" : "Khong") << endl;
-    cout << "Tan suat lot da: " << sheddingFrequency << " ngay" << endl;
-    cout << "Nhiet do yeu cau: " << requiredTemperature << " °C" << endl;
+    cout << "- Co doc          : " << (isPoisonous ? "Co" : "Khong") << endl;
+    cout << "- Tan suat lot da : " << sheddingFrequency << " (ngay)" << endl;
+    cout << "- Nhiet do yeu cau: " << requiredTemperature << " (°C)" << endl;
 }
 string reptile::hienthitype()
 {
     return "reptile";
 }
-void reptile::nhapFromStream(stringstream& ss)
+void reptile::nhaptuFile(stringstream& ss)
 {
-    ss  >> name >> weight >> age >> gender >> enclosureID >> healthStatus
+    ss  >> name >> weight >> age >> gender >> enclosureID >> trangthaisuckhoe
         >> isPoisonous >> sheddingFrequency >> requiredTemperature;
     reptile::taoma();
 }
