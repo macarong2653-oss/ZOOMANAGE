@@ -8,8 +8,8 @@ void caretaker::nhap()
 {
 	cout << "nhap ten nhan vien :";
 	getline(cin,name);
-	//cin.ignore();
-	cout << "nhap id nhan vien "; cin >> id;
+	cin.ignore();
+	cout << "nhap id nhan vien "; getline(cin,id);
 }
 void caretaker::hienthi()
 {

@@ -470,9 +470,15 @@ void manage::runManager()
 			while (choice2 == 'y')
 			{
 				cout << "nhap id chuong";
-				getline(cin, enid);
-				cin.ignore();
-				addcaretakertoenclosure(c->getId(), enid);
+				getline(cin,enid);
+				if (!FindEnclosureByID(enid))
+				{
+					cout << "khong tim thay chuong !"<<endl;
+					continue;
+				}
+				else {
+					addcaretakertoenclosure(c->getId(),enid);
+				}
 				cout << "ban co muon them chuong cho nhan vien nay khong(y/n)";
 				cin >> choice2;
 
