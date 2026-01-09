@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include"manage.h"
 int main()
