@@ -23,7 +23,7 @@ public:
 	int hienthituoi();
 	string hienthitrangthaisuckhoe();
 	string hienthiMasoChuong() { return enclosureID; }
-	virtual void nhapFromStream(stringstream& ss) = 0;
+	virtual void nhaptuFile(stringstream& ss) = 0;
 	
 };
 

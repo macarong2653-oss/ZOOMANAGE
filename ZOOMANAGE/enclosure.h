@@ -16,13 +16,13 @@ public:
 	void nhap();
 	void them(animal* x);
 	friend ostream& operator<<(ostream& os, const enclosure& e);
-	void addcaretaker(caretaker* c);
-	vector<animal*>& getAnimals() { return a; }
-	string getName() { return name; }
-	string getEnclosureID() const { return enclosureid; }
-	void RemoveAnimal(const string& animalID);
-	void DisplayOccupants();
+	void themnhanvien(caretaker* c);
+	vector<animal*>& LayDongVat() { return a; }
+	string TenChuong() { return name; }
+	string IDchuong() const { return enclosureid; }
+	void XoaDongVat(const string& animalID);
+	//void NhanVienPhuTrach();
 	size_t hienthisoluong() { return a.size(); }
-	vector <caretaker*> getCaretakers() { return ct; }
+	vector <caretaker*> NhanVienPhuTrach() { return ct; }
 	
 };

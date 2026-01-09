@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 using namespace std;
-void bird::nhapFromStream(stringstream& ss)
+void bird::nhaptuFile(stringstream& ss)
 {
     ss >> name >> weight >> age >> gender >> enclosureID >> trangthaisuckhoe
         >> canFly >> wingSpan >> featherColor;

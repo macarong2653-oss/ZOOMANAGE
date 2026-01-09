@@ -54,13 +54,13 @@ ostream& operator<<(ostream& os, const enclosure& e)
 
 	return os; 
 }
-void enclosure:: addcaretaker(caretaker* c) {
+void enclosure:: themnhanvien(caretaker* c) {
 	for (auto ct_ : ct)
 		if (ct_ == c) return;
 	ct.push_back(c);
-	c->addenclosure(this);
+	c->ThemVaoChuong(this);
 }
-void enclosure::RemoveAnimal(const string& animalID)
+void enclosure::XoaDongVat(const string& animalID)
 {
 	for (auto it = a.begin(); it != a.end(); ++it)
 	{

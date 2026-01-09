@@ -14,9 +14,9 @@ public:
 	caretaker(const string& id, const string& name);
 	void nhap();
 	void hienthi();
-	void addenclosure(enclosure* e);
-	string getId() const { return id; }
-	string getName() const { return name; }
+	void ThemVaoChuong(enclosure* e);
+	string IDnhanvien() const { return id; }
+	string TenNhanVien() const { return name; }
 	
 };
 

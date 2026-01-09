@@ -12,6 +12,6 @@ public:
 	void nhap();
 	void hienthi();
 	string hienthitype();
-	void nhapFromStream(stringstream& ss);
-	string getFurColor() { return furColor; }
+	void nhaptuFile(stringstream& ss);
+	string MauLongThu() { return furColor; }
 };

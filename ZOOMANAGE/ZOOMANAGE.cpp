@@ -5,12 +5,11 @@ int main()
 {
 	
     manage ht;
-	ht.LoadDataFromFile("D:\\input.txt");
-	ht.runManager();
-	ht.ExportToFile("D:\\output.txt");
+	ht.TaiDuLieuTuFile("D:\\input.txt");
+	ht.MENUQuanLy();
+	ht.XuatRaFile("D:\\output.txt");
 	return 0;
-	//long
-	//kkk
+	
 }
 
 

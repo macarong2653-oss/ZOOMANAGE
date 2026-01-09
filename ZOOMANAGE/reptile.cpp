@@ -42,7 +42,7 @@ string reptile::hienthitype()
 {
     return "reptile";
 }
-void reptile::nhapFromStream(stringstream& ss)
+void reptile::nhaptuFile(stringstream& ss)
 {
     ss  >> name >> weight >> age >> gender >> enclosureID >> trangthaisuckhoe
         >> isPoisonous >> sheddingFrequency >> requiredTemperature;

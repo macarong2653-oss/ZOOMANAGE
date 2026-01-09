@@ -40,7 +40,7 @@ string mammal::hienthitype()
 {
     return "mammal";
 }
-void mammal::nhapFromStream(stringstream& ss)
+void mammal::nhaptuFile(stringstream& ss)
 {
     ss  >> name >> weight >> age >> gender >> enclosureID >> trangthaisuckhoe
         >> gestationPeriod >> furColor;
