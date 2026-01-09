@@ -34,9 +34,9 @@ void manage::LoadDataFromFile(const string& filename)
 		string type;
 		ss >> type;
 
-		
+
 		// Đọc ENLOSURE
-		
+
 		if (type == "ENCLOSURE")
 		{
 			string id, name;
@@ -142,7 +142,7 @@ void manage::themmoi()
 		if (!encID.empty()) {
 			enclosure* enc = FindEnclosureByID(encID);
 			if (enc) {
-				
+
 				enc->them(newAnimal);
 			}
 			else {
@@ -152,38 +152,38 @@ void manage::themmoi()
 	}
 }
 
-void manage:: sapxep() {
-	
-		char choice;
-		do {
-			cout << "Sap xep tat ca dong vat theo (tuoi/can)(1/2): ";
-			cin >> choice;
-			cin.ignore();
+void manage::sapxep() {
 
-			vector<animal*> allAnimals;
-			for (auto& e : ec) {
-				auto& v = e->getAnimals(); 
-				allAnimals.insert(allAnimals.end(), v.begin(), v.end());
-			}
+	char choice;
+	do {
+		cout << "Sap xep tat ca dong vat theo (tuoi/can)(1/2): ";
+		cin >> choice;
+		cin.ignore();
 
-		
-			for (size_t i = 0; i < allAnimals.size() - 1; i++) {
-				for (size_t j = 0; j < allAnimals.size() - i - 1; j++) {
-					if ((choice == '1' && allAnimals[j]->hienthituoi() < allAnimals[j + 1]->hienthituoi()) ||
-						(choice == '2' && allAnimals[j]->hienthican() < allAnimals[j + 1]->hienthican())) {
-						swap(allAnimals[j], allAnimals[j + 1]); 
-					}
+		vector<animal*> allAnimals;
+		for (auto& e : ec) {
+			auto& v = e->getAnimals();
+			allAnimals.insert(allAnimals.end(), v.begin(), v.end());
+		}
+
+
+		for (size_t i = 0; i < allAnimals.size() - 1; i++) {
+			for (size_t j = 0; j < allAnimals.size() - i - 1; j++) {
+				if ((choice == '1' && allAnimals[j]->hienthituoi() < allAnimals[j + 1]->hienthituoi()) ||
+					(choice == '2' && allAnimals[j]->hienthican() < allAnimals[j + 1]->hienthican())) {
+					swap(allAnimals[j], allAnimals[j + 1]);
 				}
 			}
+		}
 
-			
-			cout << "=== Danh sach dong vat sau khi sap xep ===\n";
-			for (auto& a : allAnimals) a->hienthi();
 
-			cout << "Tiep tuc hay khong (y/n)? ";
-			cin >> choice;
-		} while (choice == 'y');
-	}
+		cout << "=== Danh sach dong vat sau khi sap xep ===\n";
+		for (auto& a : allAnimals) a->hienthi();
+
+		cout << "Tiep tuc hay khong (y/n)? ";
+		cin >> choice;
+	} while (choice == 'y');
+}
 void manage::hienthi() {
 	vector<animal*> allAnimals;
 	for (auto& e : ec) {
@@ -200,16 +200,16 @@ void manage::hienthi() {
 void manage::AddEnclosure(enclosure* e)
 {
 	ec.push_back(e);
-		cout << "Them chuong thanh cong: ID " << e->getEnclosureID() << endl;
-	
+	cout << "Them chuong thanh cong: ID " << e->getEnclosureID() << endl;
+
 }
 void manage::AddCaretaker(caretaker* c)
 {
-	
+
 	ct.push_back(c);
-			cout << "Them nhan vien thanh cong: " << c->getName() << " (ID: " << c->getId() << ")" << endl;
-	
-	}
+	cout << "Them nhan vien thanh cong: " << c->getName() << " (ID: " << c->getId() << ")" << endl;
+
+}
 void manage::addcaretakertoenclosure(const string& cid, const string& eid)
 {
 	caretaker* c = FindCaretakerByID(cid);
@@ -221,7 +221,7 @@ void manage::addcaretakertoenclosure(const string& cid, const string& eid)
 	}
 
 	e->addcaretaker(c);
-	
+
 }
 void manage::DisplayAllCaretakers() {
 	cout << "\n========== DANH SACH NHAN VIEN  ==========" << endl;
@@ -229,7 +229,7 @@ void manage::DisplayAllCaretakers() {
 		cout << "Chua co nhan vien nao trong he thong." << endl;
 		return;
 	}
-	for (auto c:ct) {
+	for (auto c : ct) {
 		c->hienthi();
 		cout << "---" << endl;
 	}
@@ -241,7 +241,7 @@ void manage::DisplayAllEnclosures() {
 		cout << "Chua co chuong nao trong he thong." << endl;
 		return;
 	}
-	for (auto* e:ec) {
+	for (auto* e : ec) {
 		e->DisplayOccupants();
 	}
 	cout << "=======================================================\n" << endl;
@@ -255,7 +255,7 @@ animal* manage::FindAnimalByID(const string& ID)
 		{
 			if (a->hienthiid() == ID)
 				return a;
-			}
+		}
 	}
 	return nullptr;
 }
@@ -269,7 +269,7 @@ void manage::FindAnimalsByName(const string& name) {
 		{
 			if (a->hienthiten() == name)
 			{
-				cout << "ID: " <<a->hienthiid() << " | Ten: " << a->hienthiten() << " | Chuong: " << a->hienthienclosureid() << endl;
+				cout << "ID: " << a->hienthiid() << " | Ten: " << a->hienthiten() << " | Chuong: " << a->hienthienclosureid() << endl;
 				found = true;
 			}
 		}
@@ -282,19 +282,19 @@ void manage::FindAnimalsByName(const string& name) {
 void manage::RemoveAnimalByID(const string& ID) {
 	bool found = false;
 
-	for (auto& enclosure : ec)                   
+	for (auto& enclosure : ec)
 	{
-		auto& animals = enclosure->getAnimals();   
+		auto& animals = enclosure->getAnimals();
 
 		for (auto it = animals.begin(); it != animals.end(); ++it)
 		{
-			if ((*it)->hienthiid() == ID)            
+			if ((*it)->hienthiid() == ID)
 			{
 				delete* it;                       // giải phóng bộ nhớ động
 				animals.erase(it);                // xóa khỏi vector
 				cout << "Da xoa dong vat co ID: " << ID << endl;
 				found = true;
-				return;                           
+				return;
 			}
 		}
 	}
@@ -304,7 +304,7 @@ void manage::RemoveAnimalByID(const string& ID) {
 }
 enclosure* manage::FindEnclosureByID(const string& ID)
 {
-	for (auto e:ec) {
+	for (auto e : ec) {
 		if (e->getEnclosureID() == ID) {
 			return e;
 		}
@@ -330,7 +330,7 @@ animal* manage::RemoveAnimalWithoutDelete(const string& ID)
 			{
 				animal* temp = *it;
 				animals.erase(it);
-				return temp;     
+				return temp;
 			}
 		}
 	}
@@ -388,7 +388,7 @@ void manage::runManager()
 
 	do {
 		cout << "                              =========== MENU HE THONG QUAN LY VUON THU ============" << endl;
-		cout << "                              |                                                     |"<<endl;
+		cout << "                              |                                                     |" << endl;
 		cout << "                              |             --- QUAN LY DOI TUONG ---               |" << endl;
 		cout << "                              |                                                     |" << endl;
 		cout << "                              | 1. Nhap thong tin Chuong moi                        |" << endl;
@@ -464,7 +464,7 @@ void manage::runManager()
 			enclosure* e = FindEnclosureByID(enclosureID);
 
 			if (a && e) {
-				
+
 				e->them(a);
 			}
 			else {
@@ -472,8 +472,8 @@ void manage::runManager()
 			}
 			break;
 		}
-		
-		
+
+
 		case 6: // Hien thi Chuong
 			DisplayAllEnclosures();
 			break;
@@ -483,7 +483,7 @@ void manage::runManager()
 		case 8: // Hien thi Dong vat
 			hienthi();
 			break;
-		
+
 		case 9: { // Tim theo Ten
 			string searchName;
 			cout << "Nhap ten hoac mot phan ten dong vat: ";
@@ -491,7 +491,7 @@ void manage::runManager()
 			FindAnimalsByName(searchName);
 			break;
 		}
-		
+
 		case 10: {
 			string animalID;
 			cout << "\n--- TIM KIEM DONG VAT THEO ID ---" << endl;
